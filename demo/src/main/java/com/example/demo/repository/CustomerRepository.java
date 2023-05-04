@@ -2,13 +2,16 @@ package com.example.demo.repository;
 
 import java.util.List;
 
+import org.springframework.data.querydsl.QuerydslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
 
 import com.example.demo.entity.Customer;
 
-public interface CustomerRepository extends CrudRepository<Customer, Long> {
+@Repository
+public interface CustomerRepository extends CrudRepository<Customer, Long>, QuerydslPredicateExecutor<Customer> {
 
-  List<Customer> findByLastName(String lastName);
+  // List<Customer> findByLastName(String lastName);
 
-  Customer findById(long id);
+  // Customer findById(long id);
 }
