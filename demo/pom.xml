@@ -74,6 +74,19 @@
   <version>${querydsl.version}</version>
 </dependency>
 
+<dependency>
+  <groupId>com.querydsl</groupId>
+  <artifactId>querydsl-sql</artifactId>
+  <version>${querydsl.version}</version>
+</dependency>
+
+<!-- <dependency>
+  <groupId>com.querydsl</groupId>
+  <artifactId>querydsl-sql-codegen</artifactId>
+  <version>${querydsl.version}</version>
+  <scope>provided</scope>
+</dependency> -->
+
 	</dependencies>
 
 	<build>

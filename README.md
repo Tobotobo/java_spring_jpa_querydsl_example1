@@ -8,6 +8,9 @@ Spring Data JPA + QueryDSLの実装例もといメモ
 - Spring Boot 2.7.11
 - QueryDSL 5.0.0
 
+## TODO
+- SQLQueryFactoryの使い方
+
 ## メモ
 
 - QueryDSL  
@@ -34,3 +37,6 @@ Spring Data JPA + QueryDSLの実装例もといメモ
 - http://querydsl.com/static/querydsl/5.0.0/reference/html/ch02s03.html
 
 - https://spring.pleiades.io/spring-data/jpa/docs/current/reference/html/
+
+- Spring Boot Data Accesss Examples
+  https://github.com/making/spring-boot-db-samples

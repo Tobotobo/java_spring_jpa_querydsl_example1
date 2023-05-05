@@ -1,14 +1,20 @@
 package com.example.demo;
 
+import javax.activation.DataSource;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy;
 
 import com.example.demo.entity.Customer;
 import com.example.demo.repository.CustomerRepository;
+import com.querydsl.sql.H2Templates;
+import com.querydsl.sql.SQLQueryFactory;
+import com.querydsl.sql.SQLTemplates;
 
 @SpringBootApplication
 public class DemoApplication {
@@ -18,6 +24,20 @@ public class DemoApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DemoApplication.class, args);
 	}
+
+	@Bean
+    com.querydsl.sql.Configuration querydslConfiguration() {
+        SQLTemplates templates = H2Templates.builder().build();
+        com.querydsl.sql.Configuration configuration = new com.querydsl.sql.Configuration(templates);
+        //configuration.setExceptionTranslator(new SpringExceptionTranslator());
+        return configuration;
+    }
+
+    @Bean
+    SQLQueryFactory sqlQueryFactory(DataSource dataSource) {
+		return new SQL
+        return new SQLQueryFactory(querydslConfiguration(), new TransactionAwareDataSourceProxy(dataSource));
+    }
 
 	// @Bean
 	// public CommandLineRunner demo(CustomerRepository repository) {
