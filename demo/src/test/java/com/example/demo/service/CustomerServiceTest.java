@@ -20,7 +20,7 @@ public class CustomerServiceTest {
     @DisplayName("手動実行")
     @Tag("manual")
     public void dev2() {
-        customerService.example1();
+        customerService.example2();
 
     }
 }
