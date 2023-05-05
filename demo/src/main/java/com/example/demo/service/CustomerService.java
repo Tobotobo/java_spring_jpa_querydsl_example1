@@ -12,6 +12,7 @@ import com.example.demo.entity.QCustomer;
 import com.querydsl.jpa.JPQLQueryFactory;
 import com.querydsl.jpa.impl.JPAQuery;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.querydsl.sql.SQLQueryFactory;
 
 @Service
 public class CustomerService {
@@ -32,7 +33,7 @@ public class CustomerService {
         var customer = QCustomer.customer;
 
         var queryFactory = new JPAQueryFactory(entityManager);
-        //var sqlQueryFactory = new SQLQueryFactory(entityManager);
+        var sqlQueryFactory = new SQLQueryFactory(entityManager);
         
         // QueryDSLのJPAQueryFactoryは主にデータベースからデータを
         // 取得するためのクエリを構築するために使用されますが、
