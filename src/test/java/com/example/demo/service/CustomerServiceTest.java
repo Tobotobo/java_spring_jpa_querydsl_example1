@@ -21,7 +21,6 @@ public class CustomerServiceTest {
     @Tag("manual")
     public void example1() throws Exception {
         customerService.example1();
-
     }
 
     @Test
@@ -29,6 +28,12 @@ public class CustomerServiceTest {
     @Tag("manual")
     public void example2() throws Exception {
         customerService.example2();
+    }
 
+    @Test
+    @DisplayName("手動実行")
+    @Tag("manual")
+    public void example3() throws Exception {
+        customerService.example3();
     }
 }

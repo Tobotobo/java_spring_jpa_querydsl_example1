@@ -29,8 +29,11 @@ public class CustomerService {
     @PersistenceContext
     EntityManager entityManager;
 
+    // @Autowired
+    // private DataSource dataSource;
+
     @Autowired
-    private DataSource dataSource;
+    JPAQueryFactory jpaQueryFactory;
 
     @Autowired
     private CustomerRepository customerRepository;
@@ -56,7 +59,7 @@ public class CustomerService {
 
         var qCustomer = QCustomer.customer;
         var query = new JPAQuery<Customer>(entityManager);
-
+        
         var c1 = query.from(qCustomer).fetch();
 
         c1.forEach(c -> {
@@ -65,7 +68,9 @@ public class CustomerService {
     }
 
     public void example2() throws Exception {
+        // JPAQueryでinsertしたかった
         // 色々やってみた結論
+        // 無理(メソッドとしては存在するが実行するとエラーになる)
         // 更新はおとなしくRepository.save() or saveAll()を使いましょう
 
         // var jpaQueryFactory = new JPAQueryFactory(entityManager);
@@ -181,7 +186,37 @@ public class CustomerService {
 
     }
 
+    public void example3() {
+        // 確認用データ追加
+        customerRepository.saveAll(Arrays.asList(
+            new Customer("Jack", "Bauer"),
+            new Customer("Chloe", "O'Brian"),
+            new Customer("Kim", "Bauer"),
+            new Customer("David", "Palmer"),
+            new Customer("Michelle", "Dessler")
+        ));
 
+        // クエリ内で使用するエンティティ
+        var customer = QCustomer.customer;
+
+        // クエリ作成
+        var query = jpaQueryFactory
+            .from(customer)
+            .where(customer.lastName.contains("B"))
+            .orderBy(customer.firstName.asc(), customer.lastName.asc())
+            ;
+
+        // 作成したクエリのSQLを出力
+        System.out.println(query);
+
+        // クエリ実行
+        var customers = query.fetch(); 
+
+        // 実行結果を出力
+        customers.forEach(c -> {
+            System.out.println(c);
+        });        
+    }
 
 
 }
