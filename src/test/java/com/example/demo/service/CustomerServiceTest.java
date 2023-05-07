@@ -19,7 +19,15 @@ public class CustomerServiceTest {
     @Test
     @DisplayName("手動実行")
     @Tag("manual")
-    public void dev2() {
+    public void example1() throws Exception {
+        customerService.example1();
+
+    }
+    
+    @Test
+    @DisplayName("手動実行")
+    @Tag("manual")
+    public void example2() throws Exception {
         customerService.example2();
 
     }

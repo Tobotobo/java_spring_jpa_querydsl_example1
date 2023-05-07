@@ -22,3 +22,10 @@ https://github.com/querydsl/querydsl/issues/3027#issuecomment-1519050505
 - Hibernate 5.6 以前は INSERT の VALUES に非対応(別テーブルからのインサートのみ対応)
 - Hibernate 6.0 以上では対応しているが、Spring Boot 3.0以上でないと使用できない。よって 2.7 では無理
 
+## JPAQueryFactoryとSQLQueryFactoryを同時に使用する
+```
+The method insert(RelationalPath<?>) in the type AbstractSQLQueryFactory<SQLQuery<?>> is not applicable for the arguments (QCustomer)
+```
+SQLQueryFactory.insert() には RelationalPath が必要です  
+https://groups.google.com/g/querydsl/c/p1SbFtCZJ5M?pli=1
+

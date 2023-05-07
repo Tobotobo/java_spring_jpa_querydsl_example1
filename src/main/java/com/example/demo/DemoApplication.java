@@ -25,19 +25,19 @@ public class DemoApplication {
 		SpringApplication.run(DemoApplication.class, args);
 	}
 
-	@Bean
-    com.querydsl.sql.Configuration querydslConfiguration() {
-        SQLTemplates templates = H2Templates.builder().build();
-        com.querydsl.sql.Configuration configuration = new com.querydsl.sql.Configuration(templates);
-        //configuration.setExceptionTranslator(new SpringExceptionTranslator());
-        return configuration;
-    }
+	// @Bean
+    // com.querydsl.sql.Configuration querydslConfiguration() {
+    //     SQLTemplates templates = H2Templates.builder().build();
+    //     com.querydsl.sql.Configuration configuration = new com.querydsl.sql.Configuration(templates);
+    //     //configuration.setExceptionTranslator(new SpringExceptionTranslator());
+    //     return configuration;
+    // }
 
-    @Bean
-    SQLQueryFactory sqlQueryFactory(DataSource dataSource) {
-		return new SQL
-        return new SQLQueryFactory(querydslConfiguration(), new TransactionAwareDataSourceProxy(dataSource));
-    }
+    // @Bean
+    // SQLQueryFactory sqlQueryFactory(DataSource dataSource) {
+	// 	return new SQL
+    //     return new SQLQueryFactory(querydslConfiguration(), new TransactionAwareDataSourceProxy(dataSource));
+    // }
 
 	// @Bean
 	// public CommandLineRunner demo(CustomerRepository repository) {

@@ -14,14 +14,34 @@ Spring Data JPA + QueryDSLの実装例もといメモ
 ## メモ
 
 - QueryDSL  
-  http://querydsl.com/  
-  https://github.com/querydsl/querydsl  
-  (2023年5月5日現在)  
-  最新:5.0.0　※2021年7月22日リリース  
-  最終コミット:2022年10月12日  
-  ライセンス:Apache-2.0  
-
+  - http://querydsl.com/  
+  - https://github.com/querydsl/querydsl  
+  - (2023年5月5日現在)  
+    最新:5.0.0　※2021年7月22日リリース  
+    最終コミット:2022年10月12日  
+    ライセンス:Apache-2.0  
 - [QueryDSLトラブルシューティング](doc/QueryDSLトラブルシューティング.md)
+- Hibernate ORM  
+  - https://hibernate.org/orm/
+  - https://github.com/hibernate/hibernate-orm
+  - Hibernate ORM は、オブジェクト/リレーショナル マッピング (ORM) サポートをアプリケーション、ライブラリ、およびフレームワークに提供するライブラリです。  
+  また、ORM の標準 Java 仕様である JPA 仕様の実装も提供します。  
+  - バージョン5系と6系がある。5系が javax、6系が jakarta
+  - 最新:5.6.15、6.2.2 ※2023年5月7日現在
+- Criteria API
+  - Criteria API は、Java Persistence Query Language (JPQL) 照会のストリングを作成する代わりに、Java™ オブジェクトを使用して照会を作成するための API です。
+  - 記述方法が煩雑で使いにくい。以下は実現したいSQLに対する記述例
+    ```sql
+    SELECT e FROM Employee e WHERE e.serviceyears < 5
+    ```
+    ```java
+    QueryBuilder qb = emf.getQueryBuilder();
+    CriteriaQuery q = qb.create(Employee.class);
+    Root e = q.from(Employee.class);
+    q.where(qb.lt(e.get(Employee_.serviceyears), 5));
+    TypedQuery tq = em.createQuery(q);
+    List result = q.getResultList();
+    ```
 
 ## 参考
 - https://spring.pleiades.io/guides/gs/accessing-data-jpa/
