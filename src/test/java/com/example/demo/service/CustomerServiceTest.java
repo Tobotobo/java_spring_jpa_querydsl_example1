@@ -23,7 +23,7 @@ public class CustomerServiceTest {
         customerService.example1();
 
     }
-    
+
     @Test
     @DisplayName("手動実行")
     @Tag("manual")
